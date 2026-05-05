@@ -7,8 +7,19 @@ repo_name: techlib/NKR-schema
 theme:
   name: material
   language: en
+  palette:
+    scheme: default
+    primary: custom
+    accent: custom
+
+extra_css:
+  - stylesheets/extra.css
 
 nav:
   - Introduction: index.md
-  - Repository object: repository.md
+  - Repository: repository.md
+  - Contact List: contact-list.md
+  - Organization: organization.md
+  - Project: project.md
+  - Service Queue: service-queue.md
   
