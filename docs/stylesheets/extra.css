@@ -5,3 +5,23 @@
 
   --md-accent-fg-color: #2b2b2b;
 }
+
+.md-typeset table {
+  table-layout: fixed;
+  width: 100%;
+}
+
+.md-typeset table td,
+.md-typeset table th {
+  white-space: normal;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  vertical-align: top;
+}
+
+.md-typeset td code,
+.md-typeset th code {
+  white-space: normal;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
