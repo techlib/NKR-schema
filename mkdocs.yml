@@ -1,0 +1,14 @@
+site_name: NKR Schema
+site_description: Schema documentation for NKR
+site_url: https://techlib.github.io/NKR-schema/
+repo_url: https://github.com/techlib/NKR-schema
+repo_name: techlib/NKR-schema
+
+theme:
+  name: material
+  language: en
+
+nav:
+  - Introduction: index.md
+  - Repository object: repository.md
+  
