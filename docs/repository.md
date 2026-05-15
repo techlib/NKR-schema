@@ -16,7 +16,7 @@ keywordCz | Keywords in Czech | string | 0..n | Freely formed keyword in Czech t
 keywordEn | Keywords in English | string | 0..n | Freely formed keyword in English that describes the content and focus of the repository.
 mainUrl | Main repository URL | uri | 0..1 | URL of the repository home page.
 mainContact | Main contact | email | 0..n | Contact for end-users (e.g. a generic email.).
-contactList | Contact list for the repository. Provide a link to an object of type ContactList. | string | | 
+contactList | Contact list for the repository. Provide a link to an object of type ContactList. | string | 0..1 | 
 organization | Organizations | object | 0..n | Organization(s) responsible for the repository management or specific part of the repository management (could be large research infrastructure or consortium). Provide a link to an object of type Organization.
 organization.organizationId | Organization | handle reference | 1..1 | 
 organization.organizationRole | Role | enum | 1..1 | 
