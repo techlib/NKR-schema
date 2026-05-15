@@ -30,7 +30,7 @@ policy.policyType | Policy type | enum | 1..1 |
 license | Supported licenses | enum | 0..n | Licenses supported by the repository.
 software | Software | string | 0..n | Software used in the repository. Select from the list or enter your own text.
 repoGit | Git platforms | uri | 0..n | The repository or organization on GitHub or another platform for code versioning (URL address of the project landing page on Git or another platform) for general or customized software used for desribed repository.
-serviceQueue | Service queue for the repository. Provide a link to an object of type ServiceQueue. | string | | 
+serviceQueue | Service queue for the repository. Provide a link to an object of type ServiceQueue. | string | 0..1 | 
 versioning | Versioning support | boolean | 0..1 | Information if the repository supports versioning of files and metadata.
 relatedPublication | Support for related publications | boolean |  | Information if the repository offers the possibility to link metadata records of the datasets with metadata of another related resources (articles, software, another datasets etc.).
 pidType | Persistent identifier type used in the repository | uri | 0..n | For definiton of PIDs in the repository, use the Wikidata URI of the identifier, eg. https://www.wikidata.org/entity/Q25670 for DOI identifier used in described repository.
