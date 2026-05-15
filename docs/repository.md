@@ -16,51 +16,53 @@ keywordCz | Keywords in Czech | string | 0..n | Freely formed keyword in Czech t
 keywordEn | Keywords in English | string | 0..n | Freely formed keyword in English that describes the content and focus of the repository.
 mainUrl | Main repository URL | uri | 0..1 | URL of the repository home page.
 mainContact | Main contact | email | 0..n | Contact for end-users (e.g. a generic email.).
-person | Persons | object | 0..n | Persons associated with the repository.
-person.personName | Person name | string | 1..1 | Person’s name.
-person.personEmail | Person email | email | 1..1 | Email of the person.
-person.personRole | Person role | enum | 1..1 | Role of the person (curator, administrator, guarantor).
-organization | Organizations | object | 0..n | Organization(s) responsible for the repository management or specific part of the repository management (could be large research infrastructure or consortium).
-organization.organizationId | Organization Id | handle reference | 1..1 | Identifier of the Organization object.
-organization.organizationRole | Organization role | enum | 1..1 | Role of the organization (funding, general, main, sponsoring, technical, user support, project guarantor)
+contactList | Contact list for the repository. Provide a link to an object of type ContactList. | string | | 
+organization | Organizations | object | 0..n | Organization(s) responsible for the repository management or specific part of the repository management (could be large research infrastructure or consortium). Provide a link to an object of type Organization.
+organization.organizationId | Organization | handle reference | 1..1 | 
+organization.organizationRole | Role | enum | 1..1 | 
+workingGroup | Relevant EOSC CZ working groups | enum |  | EOSC CZ working groups relevant for the repository.
+workingGroup.Working Group | Working Group |  |  | 
+fundingProject | Funding projects | string |  | Funding grants or projects. Provide a link to an object of type Project.
+fundingProject.Project | Project |  |  | 
 policy | Repository policies | object | 0..n | Repository policies.
-policy.policyUrl | Policy URL | uri | 1..1 | URL of the policy.
-policy.policyType | Policy type | enum | 1..1 | Type of the policy.
-license | License support | handle reference | 0..n | Licenses supported by the repository.
-software | Software | string | 0..n | Software used in the repository.
-repoGit | Git platforms | uri | 0..n | Repository or organization page on GitHub or similar platform.
-versioning | Versioning support | boolean | 0..1 | Whether the repository supports versioning of files and metadata.
-pidType | Persistent identifier types | uri | 0..n | Wikidata URIs of PID types used in the repository.
-doiPrefix | DOI prefixes | string | 0..n | DOI prefixes used by the repository.
-handlePrefix | Handle prefixes | string | 0..n | Handle prefixes used by the repository.
-pidPerson | Supported PIDs for persons | enum | 0..n | Types of persistent identifiers used for persons.
-relatedPublication | Support for related publications | boolean | 0..1 | Whether the repository supports linking datasets to related resources.
-certificate | Repository certification | enum | 0..n | Certifications obtained by the repository.
-metadataStandard | Metadata standards | object | 0..n | Metadata standards used in the repository.
-metadataStandard.metadataStandardId | Metadata standard Id | handle reference | 1..1 | Identifier of the metadata standard.
-metadataStandard.metadataStandardUsage | Metadata standard usage | enum | 1..1 | How the metadata standard is used.
-restApi | REST API | object | 0..n | Information about repository REST API.
-restApi.restApiEndpoint | REST API endpoint | uri | 1..1 | REST API endpoint URL.
-restApi.restApiSpecification | REST API specification | uri | 1..1 | API documentation or OpenAPI specification.
-sparqlApi | SPARQL API | object | 0..n | Information about repository SPARQL API.
-sparqlApi.sparqlApiEndpoint | SPARQL API endpoint | uri | 1..1 | SPARQL endpoint URL.
-sparqlApi.sparqlApiSpecification | SPARQL API specification | uri | 1..1 | SPARQL API documentation.
-oaipmhEndpoint | OAI-PMH endpoint | uri | 0..1 | OAI-PMH endpoint of the repository.
-documentationTech | Technical documentation | uri | 0..n | Technical documentation URLs.
-documentationUser | User documentation | uri | 0..n | User documentation URLs.
-controlledVocabulary | Controlled vocabularies | handle reference | 0..n | Controlled vocabularies used in the repository.
-datasetMaxSize | Dataset size limit | number | 0..1 | Maximum possible dataset size (GB).
-sensitiveData | Support for sensitive data | boolean | 0..1 | Whether the repository supports sensitive data deposit.
-datasetType | Supported dataset types | enum | 0..n | Types of datasets supported.
-uiLanguage | UI languages | enum | 0..n | Languages supported by the repository UI.
-fip | FAIR Implementation Profiles | handle reference | 0..n | FAIR Implementation Profiles linked to the repository.
-relatedRegistry | External registry record | object | 0..n | Information about registration in external registries.
-relatedRegistry.relatedRegistryUrl | External registry record URL | uri | 1..1 | URL of the registry entry.
-relatedRegistry.relatedRegistryName | External registry name | enum | 1..1 | Name of the registry (re3data, FAIRsharing, etc.).
+policy.policyUrl | Policy URL | uri | 1..1 | 
+policy.policyType | Policy type | enum | 1..1 | 
+license | Supported licenses | enum | 0..n | Licenses supported by the repository.
+software | Software | string | 0..n | Software used in the repository. Select from the list or enter your own text.
+repoGit | Git platforms | uri | 0..n | The repository or organization on GitHub or another platform for code versioning (URL address of the project landing page on Git or another platform) for general or customized software used for desribed repository.
+serviceQueue | Service queue for the repository. Provide a link to an object of type ServiceQueue. | string | | 
+versioning | Versioning support | boolean | 0..1 | Information if the repository supports versioning of files and metadata.
+relatedPublication | Support for related publications | boolean |  | Information if the repository offers the possibility to link metadata records of the datasets with metadata of another related resources (articles, software, another datasets etc.).
+pidType | Persistent identifier type used in the repository | uri | 0..n | For definiton of PIDs in the repository, use the Wikidata URI of the identifier, eg. https://www.wikidata.org/entity/Q25670 for DOI identifier used in described repository.
+doiPrefix | DOI prefixes | string | 0..n | If the repository provides DOI identifier(s), enter the DOI prefix(es).
+handlePrefix | Handle prefixes | string | 0..n | If the repository provides Handle identifier(s), enter the Handle prefix(es).
+pidPerson | Supported persistent identifiers for persons | enum | 0..n | Select the type of persistent identifiers which are used in the repository for person identification.
+certificate | Repository certification | enum | 0..n | The type of certification that the repository has obtained.
+metadataStandard | Metadata standards | object | 0..n | Metadata standards used in the repository. Provide a link to an object of type MetadataSchema.
+metadataStandard.metadataStandardId | Metadata standard | handle reference | 1..1 | 
+metadataStandard.metadataStandardUsage | Usage | enum | 1..1 | Usage of the metadata standard in the repository.
+restApi | Repository REST API | object | 0..n | Information about the repository REST API.
+restApi.restApiEndpoint | Endpoint | uri | 1..1 | REST API endpoint (URL address) of the repository.
+restApi.restApiSpecification | Specification | uri | 1..1 | Documentation or specification of the repository REST API (a set of instructions on how to work with API and how to send queries, eg. OpenAPI specification).
+sparqlApi | Repository SPARQL API | object | 0..n | Information about the repository SPARQL API.
+sparqlApi.sparqlApiEndpoint | Endpoint | uri | 1..1 | SPARQL API endpoint (URL address) of the repository.
+sparqlApi.sparqlApiSpecification | Specification | uri | 1..1 | Documentation or specification of the repository SPARQL API (a set of instructions on how to work with the API and how to send queries).
+oaipmhEndpoint | Repository OAI-PMH endpoints | uri | 0..1 | OAI-PMH endpoints (URL address) of the repository.
+documentationTech | Technical documentation | uri | 0..n | Repository technical documentation (repository architecture, parameters of used software, functions etc.).
+documentationUser | User documentation | uri | 0..n | Repository user documentation (for using the repository).
+controlledVocabulary | Controlled vocabularies | handle reference | 0..n | Controlled vocabularies used in the repository. Provide a link to an object of type ControlledVocab.
+datasetMaxSize | Dataset size limit | number | 0..1 | The maximum possible size of the uploaded dataset. Please specify in GB.
+sensitiveData | Support for sensitive data | boolean | 0..1 | Information if the repository supports sensitive data deposit.
+datasetType | Supported dataset types | enum | 0..n | Type(s) of the supported dataset(s).d.
+uiLanguage | UI languages | enum | 0..n | Language(s) of the reposiory UI.
+fip | FAIR Implementation Profiles | handle reference | 0..n | FAIR Implementation Profiles linked to the repository. Provide a link to an object of type FIP.
+relatedRegistry | Registry record | object | 0..n | Information on whether the repository is registered.
+relatedRegistry.relatedRegistryUrl | URL of the registry entry | uri | 1..1 | 
+relatedRegistry.relatedRegistryName | Registry name | enum | 1..1 | 
 indexedIn | Indexed in aggregator | object | 0..n | Information on whether the repository is indexed in an aggregator.
-indexedIn.indexedInUrl | Aggregator URL | uri | 1..1 | URL address that points to the repository records indexed in the aggragator. Example: https://explore.openaire.eu/search/dataprovider?datasourceId=opendoar____::01894d6f048493d2cacde3c579c315a3.
-indexedIn.indexedInName | Aggregator name | enum | 1..1 | Aggregator name (NMA, OpenAIRE).
-remarks | Remarks | string  | 0..1 | Additional remarks not captured elsewhere.
+indexedIn.indexedInUrl | URL of the repository in the aggregator | uri | 1..1 | URL address that points to the repository records indexed in the aggragator. Example: https://explore.openaire.eu/search/dataprovider?datasourceId=opendoar____::01894d6f048493d2cacde3c579c315a3
+indexedIn.indexedInName | Aggregator name | enum | 1..1 | 
+remarks | Remarks | string  | 0..1 | Any remarks which are not possible to enter in another field.
 
 
 
