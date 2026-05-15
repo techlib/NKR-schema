@@ -20,10 +20,10 @@ contactList | Contact list for the repository. Provide a link to an object of ty
 organization | Organizations | object | 0..n | Organization(s) responsible for the repository management or specific part of the repository management (could be large research infrastructure or consortium). Provide a link to an object of type Organization.
 organization.organizationId | Organization | handle reference | 1..1 | 
 organization.organizationRole | Role | enum | 1..1 | 
-workingGroup | Relevant EOSC CZ working groups | enum |  | EOSC CZ working groups relevant for the repository.
-workingGroup.Working Group | Working Group |  |  | 
-fundingProject | Funding projects | string |  | Funding grants or projects. Provide a link to an object of type Project.
-fundingProject.Project | Project |  |  | 
+workingGroup | Relevant EOSC CZ working groups | enum | 0..n | EOSC CZ working groups relevant for the repository.
+workingGroup.Working Group | Working Group | 1..1 |  | 
+fundingProject | Funding projects | string | 0..n | Funding grants or projects. Provide a link to an object of type Project.
+fundingProject.Project | Project | 1..1 |  | 
 policy | Repository policies | object | 0..n | Repository policies.
 policy.policyUrl | Policy URL | uri | 1..1 | 
 policy.policyType | Policy type | enum | 1..1 | 
