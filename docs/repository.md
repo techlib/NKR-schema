@@ -32,7 +32,7 @@ software | Software | string | 0..n | Software used in the repository. Select fr
 repoGit | Git platforms | uri | 0..n | The repository or organization on GitHub or another platform for code versioning (URL address of the project landing page on Git or another platform) for general or customized software used for desribed repository.
 serviceQueue | Service queue for the repository. Provide a link to an object of type ServiceQueue. | string | 0..1 | 
 versioning | Versioning support | boolean | 0..1 | Information if the repository supports versioning of files and metadata.
-relatedPublication | Support for related publications | boolean |  | Information if the repository offers the possibility to link metadata records of the datasets with metadata of another related resources (articles, software, another datasets etc.).
+relatedPublication | Support for related publications | boolean | 0..1 | Information if the repository offers the possibility to link metadata records of the datasets with metadata of another related resources (articles, software, another datasets etc.).
 pidType | Persistent identifier type used in the repository | uri | 0..n | For definiton of PIDs in the repository, use the Wikidata URI of the identifier, eg. https://www.wikidata.org/entity/Q25670 for DOI identifier used in described repository.
 doiPrefix | DOI prefixes | string | 0..n | If the repository provides DOI identifier(s), enter the DOI prefix(es).
 handlePrefix | Handle prefixes | string | 0..n | If the repository provides Handle identifier(s), enter the Handle prefix(es).
