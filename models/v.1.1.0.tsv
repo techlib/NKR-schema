@@ -1,0 +1,15 @@
+//Flowchart
+//https://research.ng-london.org.uk/modelling/
+//subgraph NKR
+Repository	has related organization (0 to n)	Organization	object|actor
+Repository	is funded by (0 to n)	Project	object|object
+Repository	has (1 to 1)	ContactList	object|object
+Repository	has (0 to 1)	ServiceQueue	object|object
+Repository	has (0 to 1)	AAIIntegration	object|object
+Repository	uses (0 to n)	MetadataSchema	object|object
+Repository	uses (0 to n)	ControlledVocab	object|object
+Repository	has FAIR Implemenation Profile (0 to n)	FIP	object|object
+ControlledVocab-Request	used in (0 to n)	Repository	object|object
+ControlledVocab-Request	approved as (0 to 1)	ControlledVocab	object|object
+Organization	has parent (0 to n)	Organization	object|object
+//end
