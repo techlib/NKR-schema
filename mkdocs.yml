@@ -22,4 +22,5 @@ nav:
   - Organization: organization.md
   - Project: project.md
   - Service Queue: service-queue.md
-  
+  - AAI Integration: aai-integration.md
+  - Controlled Vocabulary Request: controlled-vocab-request.md
