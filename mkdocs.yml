@@ -17,7 +17,8 @@ extra_css:
 
 nav:
   - Introduction: index.md
-  - Repository: repository.md
+  - Repository Summary: repository-summary.md
+  - Repository Detail: repository-detail.md
   - Contact List: contact-list.md
   - Organization: organization.md
   - Project: project.md
