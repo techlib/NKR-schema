@@ -39,12 +39,6 @@
         }
       }
     },
-    "mainUrl": {
-      "type": "string",
-      "format": "uri",
-      "title": "Main repository URL",
-      "description": "URL of the repository home page."
-    },
     "abuseContact": {
       "type": "array",
       "title": "Contact for reporting malicious activities",
@@ -66,26 +60,6 @@
             ]
           }
         }
-      }
-    },
-    "workingGroup": {
-      "type": "array",
-      "format": "table",
-      "title": "Relevant EOSC CZ working groups",
-      "description": "EOSC CZ working groups relevant for the repository.",
-      "items": {
-        "type": "string",
-        "enum": [
-          "HUMA - Humanities and the Arts",
-          "SOCIAL - Social Sciences",
-          "ENVI - Environmental Sciences",
-          "MATECH - Material Sciences and Engineering",
-          "B/H/F - Bio/Health/Food",
-          "DM-AI-ML - Data Management for AI and ML",
-          "PHYSICS - Physical Sciences",
-          "SENSI - Sensitive Data"
-        ],
-        "title": "Working Group"
       }
     },
     "policy": {
@@ -549,11 +523,15 @@
         }
       }
     },
-    "remarks": {
-      "type": "string",
-      "format": "textarea",
-      "description": "Any remarks which are not possible to enter in another field.",
-      "title": "Remarks"
+    "internalRemarks": {
+      "type": "array",
+      "title": "Remarks for internal use only",
+      "description": "Any remarks which are not possible to enter in another field but are important for EOSC stakeholders. These remarks will be deleted before the detailed record will be published.",
+      "items": {
+        "type": "string",
+        "format": "textarea",
+        "title": "Remark"
+      }
     }
   }
 }
