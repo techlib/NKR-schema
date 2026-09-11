@@ -16,12 +16,11 @@ extra_css:
   - stylesheets/extra.css
 
 nav:
-  - Introduction: index.md
-  - Repository Summary: repository-summary.md
-  - Repository Detail: repository-detail.md
+  - AAI Integration: aai-integration.md
   - Contact List: contact-list.md
+  - Controlled Vocab Request: controlled-vocab-request.md
   - Organization: organization.md
   - Project: project.md
+  - Repository Detail: repository-detail.md
+  - Repository Summary: repository-summary.md
   - Service Queue: service-queue.md
-  - AAI Integration: aai-integration.md
-  - Controlled Vocabulary Request: controlled-vocab-request.md
