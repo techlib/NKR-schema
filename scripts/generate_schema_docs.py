@@ -80,7 +80,7 @@ def generate_docs(
     """
     docs_dir.mkdir(parents=True, exist_ok=True)
     written: list[Path] = []
-    schema_paths = sorted(schemas_dir.glob("*.schema.json"))
+    schema_paths = schema_paths_in(schemas_dir)
     expected_paths = {
         docs_dir / f"{_schema_slug(schema_path)}.md"
         for schema_path in schema_paths
@@ -102,10 +102,54 @@ def generate_docs(
     return written
 
 
+def schema_paths_in(schemas_dir: Path) -> list[Path]:
+    return sorted(schemas_dir.glob("*.schema.json"))
+
+
 def _remove_stale_docs(docs_dir: Path, expected_paths: set[Path]) -> None:
     for markdown_path in docs_dir.glob("*.md"):
         if markdown_path not in expected_paths:
             markdown_path.unlink()
+
+
+def update_mkdocs_nav(mkdocs_path: Path, schema_paths: list[Path]) -> None:
+    """Replace the MkDocs nav block with pages generated from schemas."""
+    nav_lines = ["nav:\n"]
+    nav_lines.extend(
+        f"  - {_schema_nav_label(schema_path)}: {_schema_slug(schema_path)}.md\n"
+        for schema_path in schema_paths
+    )
+
+    original = mkdocs_path.read_text(encoding="utf-8")
+    lines = original.splitlines(keepends=True)
+    nav_start = _find_nav_start(lines)
+
+    if nav_start is None:
+        separator = "" if original.endswith("\n") or not original else "\n"
+        mkdocs_path.write_text(
+            f"{original}{separator}\n{''.join(nav_lines)}",
+            encoding="utf-8",
+        )
+        return
+
+    nav_end = _find_nav_end(lines, nav_start)
+    lines[nav_start:nav_end] = nav_lines
+    mkdocs_path.write_text("".join(lines), encoding="utf-8")
+
+
+def _find_nav_start(lines: list[str]) -> int | None:
+    for index, line in enumerate(lines):
+        if line.strip() == "nav:" and not line.startswith((" ", "\t")):
+            return index
+    return None
+
+
+def _find_nav_end(lines: list[str], nav_start: int) -> int:
+    for index in range(nav_start + 1, len(lines)):
+        line = lines[index]
+        if line.strip() and not line.startswith((" ", "\t")):
+            return index
+    return len(lines)
 
 
 def _iter_properties(
@@ -215,8 +259,22 @@ def _is_cordra_generated(schema: dict[str, Any]) -> bool:
 
 def _schema_slug(schema_path: Path) -> str:
     name = schema_path.name.removesuffix(".schema.json")
-    words = re.findall(r"[A-Z]+(?=[A-Z][a-z]|$)|[A-Z]?[a-z]+|\d+", name)
+    words = _schema_words(schema_path)
     return "-".join(word.lower() for word in words) or name.lower()
+
+
+def _schema_nav_label(schema_path: Path) -> str:
+    words = _schema_words(schema_path)
+    return " ".join(_uppercase_first_letter(word) for word in words)
+
+
+def _schema_words(schema_path: Path) -> list[str]:
+    name = schema_path.name.removesuffix(".schema.json")
+    return re.findall(r"[A-Z]+(?=[A-Z][a-z]|$)|[A-Z]?[a-z]+|\d+", name)
+
+
+def _uppercase_first_letter(word: str) -> str:
+    return f"{word[:1].upper()}{word[1:]}"
 
 
 def _escape_cell(value: Any) -> str:
@@ -241,6 +299,12 @@ def _parse_args() -> argparse.Namespace:
         help="Directory where Markdown files will be written.",
     )
     parser.add_argument(
+        "--mkdocs-file",
+        type=Path,
+        default=project_root / "mkdocs.yml",
+        help="MkDocs configuration file whose nav block will be updated.",
+    )
+    parser.add_argument(
         "--no-overwrite",
         action="store_true",
         help="Create missing Markdown files only and keep existing files unchanged.",
@@ -250,17 +314,25 @@ def _parse_args() -> argparse.Namespace:
         action="store_true",
         help="Keep Markdown files that do not match schemas in --schemas-dir.",
     )
+    parser.add_argument(
+        "--no-update-nav",
+        action="store_true",
+        help="Keep mkdocs.yml nav unchanged.",
+    )
     return parser.parse_args()
 
 
 def main() -> int:
     args = _parse_args()
+    schema_paths = schema_paths_in(args.schemas_dir)
     written = generate_docs(
         schemas_dir=args.schemas_dir,
         docs_dir=args.docs_dir,
         overwrite=not args.no_overwrite,
         prune=not args.no_prune,
     )
+    if not args.no_update_nav:
+        update_mkdocs_nav(args.mkdocs_file, schema_paths)
     for path in written:
         print(path)
     return 0

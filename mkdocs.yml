@@ -16,4 +16,8 @@ extra_css:
   - stylesheets/extra.css
 
 nav:
+  - Contact List: contact-list.md
+  - Organization: organization.md
+  - Project: project.md
   - Repository: repository.md
+  - Service Queue: service-queue.md
