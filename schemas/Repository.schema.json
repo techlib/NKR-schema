@@ -23,8 +23,8 @@
     },
     "codeName": {
       "type": "string",
-      "title": "Codename for the repository (internal use only)",
-      "readOnly": true
+      "title": "Codename for the repository",
+      "description": "Internal use only. Must not be modified after creation."
     },
     "repositoryName": {
       "type": "string",
@@ -148,6 +148,16 @@
       "type": "array",
       "title": "Main contact",
       "description": "Contact for the end-user, e.g. a generic email.",
+      "items": {
+        "type": "string",
+        "format": "email",
+        "title": "Email"
+      }
+    },
+    "abuseContact": {
+      "type": "array",
+      "title": "Contact for reporting malicious activities",
+      "description": "A generic email for reporting malicious activities.",
       "items": {
         "type": "string",
         "format": "email",
@@ -329,6 +339,12 @@
         }
       }
     },
+    "nrpInfrastructure": {
+      "type": "boolean",
+      "format": "checkbox",
+      "title": "NRP infrastructure",
+      "description": "Information whether the repository runs on the NRP infrastructure."
+    },
     "repoGit": {
       "type": "array",
       "title": "Git platforms",
@@ -347,6 +363,19 @@
           "handleReference": {
             "types": [
               "ServiceQueue"
+            ]
+          }
+        }
+      }
+    },
+    "aaiIntegration": {
+      "title": "AAI integration for the repository. Provide a link to an object of type AAIIntegration.",
+      "type": "string",
+      "cordra": {
+        "type": {
+          "handleReference": {
+            "types": [
+              "AAIIntegration"
             ]
           }
         }
@@ -428,22 +457,22 @@
         "title": "Certificate"
       }
     },
-    "metadataStandard": {
+    "metadataSchema": {
       "type": "array",
       "format": "table",
       "uniqueItems": true,
-      "title": "Metadata standards",
-      "description": "Metadata standards used in the repository. Provide a link to an object of type MetadataSchema.",
+      "title": "Metadata schemas",
+      "description": "Metadata schemas used in the repository. Provide a link to an object of type MetadataSchema.",
       "items": {
         "type": "object",
-        "title": "Metadata standard",
+        "title": "Metadata schema",
         "required": [
-          "metadataStandardId",
-          "metadataStandardUsage"
+          "metadataSchemaId",
+          "metadataSchemaUsage"
         ],
         "properties": {
-          "metadataStandardId": {
-            "title": "Metadata standard",
+          "metadataSchemaId": {
+            "title": "Metadata schema",
             "type": "string",
             "cordra": {
               "type": {
@@ -455,16 +484,14 @@
               }
             }
           },
-          "metadataStandardUsage": {
+          "metadataSchemaUsage": {
             "title": "Usage",
             "type": "string",
-            "description": "Usage of the metadata standard in the repository.",
+            "description": "Usage of the metadata schema in the repository.",
             "enum": [
-              "general",
               "internal format",
               "export via REST API",
-              "export via OAI-PMH",
-              "other"
+              "export via OAI-PMH"
             ]
           }
         }

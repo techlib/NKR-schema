@@ -3,7 +3,7 @@ id | name | data type | cardinality | description
 id | id | string | 1..1 | 
 handleUrl | Handle identifier | uri | 1..1 | Persistent identifier for the record.
 name | Name | string | 1..1 | 
-person | Persons | object | 0..n | Person(s) associated with the repository. For affiliation, use freetext. For phone number, use the international format, e.g.+420 xxx xxx xxx. Select the appropriate role: project owner/garant, administrator/správce, data curator/datový kurátor, developer/vývojář, specialist/metodik.
+person | Persons | object | 0..n | Person(s) associated with the repository. For affiliation, use freetext. For phone number, use the international format, e.g.+420 xxx xxx xxx. Select the appropriate role: project owner/garant, administrator/správce, data curator/datový kurátor, developer/vývojář, specialist/metodik, AAI contact (technical contact for AAI facility), security incident contact, or other.
 person.personName | Name | string | 1..1 | 
 person.personEmail | Email | email | 0..1 | 
 person.personPhone | Phone number | string | 0..1 | 
