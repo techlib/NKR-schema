@@ -16,11 +16,4 @@ extra_css:
   - stylesheets/extra.css
 
 nav:
-  - Introduction: index.md
   - Repository: repository.md
-  - Contact List: contact-list.md
-  - Organization: organization.md
-  - Project: project.md
-  - Service Queue: service-queue.md
-  - AAI Integration: aai-integration.md
-  - Controlled Vocabulary Request: controlled-vocab-request.md
