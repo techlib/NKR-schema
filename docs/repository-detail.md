@@ -4,10 +4,8 @@ id | Record identifier | string | 1..1 | NKR identifier of the record (autogener
 handleUrl | Handle identifier | uri | 1..1 | Persistent identifier for the record.
 codeName | Codename for the repository | string | 1..1 | Internal use only. Must not be modified after creation.
 name | Name | string | 1..1 | 
-mainUrl | Main repository URL | uri | 0..1 | URL of the repository home page.
 abuseContact | Contact for reporting malicious activities | email | 0..n | A generic email for reporting malicious activities.
 contactList | Contact list for the repository. Provide a link to an object of type ContactList. | handle reference | 0..1 | 
-workingGroup | Relevant EOSC CZ working groups | enum | 0..n | EOSC CZ working groups relevant for the repository.
 policy | Repository policies | object | 0..n | Repository policies.
 policy.policyUrl | Policy URL | uri | 1..1 | 
 policy.policyType | Policy type | enum | 1..1 | 
@@ -47,4 +45,4 @@ relatedRegistry.relatedRegistryName | Registry name | enum | 1..1 |
 indexedIn | Indexed in aggregator | object | 0..n | Information on whether the repository is indexed in an aggregator.
 indexedIn.indexedInUrl | URL of the repository in the aggregator | uri | 1..1 | URL address that points to the repository records indexed in the aggragator. Example: https://explore.openaire.eu/search/dataprovider?datasourceId=opendoar____::01894d6f048493d2cacde3c579c315a3
 indexedIn.indexedInName | Aggregator name | enum | 1..1 | 
-remarks | Remarks | string | 0..1 | Any remarks which are not possible to enter in another field.
+internalRemarks | Remarks for internal use only | string | 0..n | Any remarks which are not possible to enter in another field but are important for EOSC stakeholders. These remarks will be deleted before the detailed record will be published.
