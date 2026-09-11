@@ -71,11 +71,25 @@ def generate_docs(
     schemas_dir: Path,
     docs_dir: Path,
     overwrite: bool = True,
+    prune: bool = True,
 ) -> list[Path]:
-    """Generate one Markdown file per ``*.schema.json`` file."""
+    """Generate one Markdown file per ``*.schema.json`` file.
+
+    When ``prune`` is enabled, top-level Markdown files in ``docs_dir`` that do
+    not match a schema in ``schemas_dir`` are removed.
+    """
     docs_dir.mkdir(parents=True, exist_ok=True)
     written: list[Path] = []
-    for schema_path in sorted(schemas_dir.glob("*.schema.json")):
+    schema_paths = sorted(schemas_dir.glob("*.schema.json"))
+    expected_paths = {
+        docs_dir / f"{_schema_slug(schema_path)}.md"
+        for schema_path in schema_paths
+    }
+
+    if prune:
+        _remove_stale_docs(docs_dir, expected_paths)
+
+    for schema_path in schema_paths:
         with schema_path.open("r", encoding="utf-8") as schema_file:
             schema = json.load(schema_file)
 
@@ -86,6 +100,12 @@ def generate_docs(
         output_path.write_text(schema_to_markdown(schema), encoding="utf-8")
         written.append(output_path)
     return written
+
+
+def _remove_stale_docs(docs_dir: Path, expected_paths: set[Path]) -> None:
+    for markdown_path in docs_dir.glob("*.md"):
+        if markdown_path not in expected_paths:
+            markdown_path.unlink()
 
 
 def _iter_properties(
@@ -211,7 +231,7 @@ def _parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--schemas-dir",
         type=Path,
-        default=project_root / "schemas" / "v1.0.0",
+        default=project_root / "schemas",
         help="Directory with *.schema.json files.",
     )
     parser.add_argument(
@@ -225,6 +245,11 @@ def _parse_args() -> argparse.Namespace:
         action="store_true",
         help="Create missing Markdown files only and keep existing files unchanged.",
     )
+    parser.add_argument(
+        "--no-prune",
+        action="store_true",
+        help="Keep Markdown files that do not match schemas in --schemas-dir.",
+    )
     return parser.parse_args()
 
 
@@ -234,6 +259,7 @@ def main() -> int:
         schemas_dir=args.schemas_dir,
         docs_dir=args.docs_dir,
         overwrite=not args.no_overwrite,
+        prune=not args.no_prune,
     )
     for path in written:
         print(path)
