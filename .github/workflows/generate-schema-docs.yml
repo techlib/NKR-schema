@@ -1,0 +1,51 @@
+name: Generate schema docs
+
+on:
+  push:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: generate-schema-docs-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  generate:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout current branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Load generator from main
+        run: |
+          git fetch --no-tags --depth=1 origin main
+          mkdir -p scripts
+          git show origin/main:scripts/generate_schema_docs.py > scripts/generate_schema_docs.py
+
+      - name: Generate docs
+        run: python scripts/generate_schema_docs.py
+
+      - name: Commit generated docs
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A docs mkdocs.yml
+
+          if git diff --cached --quiet; then
+            echo "Generated docs are already up to date."
+            exit 0
+          fi
+
+          git commit -m "Update generated schema docs [skip ci]"
+          git push origin HEAD:${{ github.ref_name }}
