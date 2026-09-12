@@ -45,14 +45,32 @@
         }
       }
     },
-    "additionalName": {
+    "additionalNames": {
       "type": "array",
-      "items": {
-        "type": "string",
-        "title": "Name"
-      },
       "title": "Alternative repository names",
-      "description": "Alternative repository name or acronym of the official repository name."
+      "description": "Alternative repository name or acronym of the official repository name.",
+      "format": "table",
+      "items": {
+        "type": "object",
+        "title": "Alternate name",
+        "required": [
+          "additionalName"
+        ],
+        "properties": {
+          "additionalName": {
+            "title": "Alternate name",
+            "type": "string"
+          },
+          "lang": {
+            "title": "Language",
+            "type": "string",
+            "enum": [
+              "Czech",
+              "English"
+            ]
+          }
+        }
+      }
     },
     "descriptionCz": {
       "type": "string",
