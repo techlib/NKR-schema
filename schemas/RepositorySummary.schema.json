@@ -130,26 +130,22 @@
       }
     },
     "software": {
-      "type": "array",
+      "type": "string",
       "title": "Software",
-      "description": "Software used in the repository. Select from the list or enter your own text.",
-      "items": {
-        "type": "string",
-        "title": "Software",
-        "cordra": {
-          "type": {
-            "suggestedVocabulary": [
-              "ArcGIS Hub",
-              "ASEP/ARL",
-              "CESNET Invenio",
-              "CLARIN DSpace",
-              "Dataverse",
-              "Fedora",
-              "Islandora",
-              "custom-built",
-              "other"
-            ]
-          }
+      "description": "Main software on which the repository is built. Select from the list or enter your own text. In case of minor customizations and configurations, please provide the original software used for the customization.",
+      "cordra": {
+        "type": {
+          "suggestedVocabulary": [
+            "ArcGIS Hub",
+            "ASEP/ARL",
+            "CESNET Invenio",
+            "CLARIN DSpace",
+            "Dataverse",
+            "Fedora",
+            "Islandora",
+            "custom-built",
+            "other"
+          ]
         }
       }
     },
@@ -168,7 +164,7 @@
     "subject": {
       "type": "array",
       "title": "Subject classification",
-      "description": "Field(s) to which the repository content is dedicated, as defined by the Frascati Manual. If the repository is generic, covering all subjects, it is necessary to select all subjects one by one.",
+      "description": "Field(s) to which the repository content is dedicated, as defined by the Frascati Manual. Copy the URI's from https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/. If the repository is generic, covering all subjects, it is necessary to select all 6 top level areas one by one.",
       "items": {
         "title": "Subject",
         "type": "string",
