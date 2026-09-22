@@ -10,10 +10,10 @@ descriptionCz | Description in Czech | string | 1..1 | Repository description in
 descriptionEn | Description in English | string | 1..1 | Repository description in English.
 type | Repository type | enum | 1..1 | Repository type according to its content and purpose.
 status | Repository status | enum | 1..1 | Actual repository development or production status.
-software | Software | string | 1..n | Software used in the repository. Select from the list or enter your own text.
+software | Software | string | 1..1 | Main software on which the repository is built. Select from the list or enter your own text. In case of minor customizations and configurations, please provide the original software used for the customization.
 releaseDate | Repository release date | date | 1..1 | The date when the repository moves or will move into the production phase. This can also be a planned date in the future.
 endProduction | End of production phase | date | 0..1 | The date when the repository has passed or will pass into the decommissioned phase. This may also be a planned date in the future.
-subject | Subject classification | uri | 1..n | Field(s) to which the repository content is dedicated, as defined by the Frascati Manual. If the repository is generic, covering all subjects, it is necessary to select all subjects one by one.
+subject | Subject classification | uri | 1..n | Field(s) to which the repository content is dedicated, as defined by the Frascati Manual. Copy the URI's from https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/. If the repository is generic, covering all subjects, it is necessary to select all 6 top level areas one by one.
 keywordCz | Keywords in Czech | string | 1..n | Freely formed keyword in Czech that describes the content and focus of the repository.
 keywordEn | Keywords in English | string | 1..n | Freely formed keyword in English that describes the content and focus of the repository.
 mainContact | Main contact | email | 1..n | Contact for the end-user, e.g. a generic email.
