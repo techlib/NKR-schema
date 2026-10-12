@@ -126,11 +126,38 @@
         "title": "License"
       }
     },
+    "researchInfrastructure": {
+      "type": "array",
+      "title": "Research infrastructure",
+      "description": "Information whether the repository is related to any research infrastructures, either Czech large infrastrucutres or European ones. Identified by ROR.org.",
+      "items": {
+        "type": "string",
+        "format": "uri",
+        "pattern": "^https://.ror.org/",
+        "title": "ROR"
+      }
+    },
     "nrpInfrastructure": {
-      "type": "boolean",
-      "format": "checkbox",
+      "type": "object",
       "title": "NRP infrastructure",
-      "description": "Information whether the repository runs on the NRP infrastructure."
+      "description": "Information whether the repository uses the NRP infrastructure and which part of it.",
+      "properties": {
+        "S3": {
+          "type": "boolean",
+          "format": "checkbox",
+          "title": "S3"
+        },
+        "Kubernetes": {
+          "type": "boolean",
+          "format": "checkbox",
+          "title": "Kubernetes"
+        },
+        "AAI": {
+          "type": "boolean",
+          "format": "checkbox",
+          "title": "AAI"
+        }
+      }
     },
     "repoGit": {
       "type": "array",
@@ -144,13 +171,16 @@
     },
     "serviceQueue": {
       "title": "Service queue for the repository. Provide a link to an object of type ServiceQueue.",
-      "type": "string",
-      "cordra": {
-        "type": {
-          "handleReference": {
-            "types": [
-              "ServiceQueue"
-            ]
+      "type": "array",
+      "items": {
+        "type": "string",
+        "cordra": {
+          "type": {
+            "handleReference": {
+              "types": [
+                "ServiceQueue"
+              ]
+            }
           }
         }
       }
@@ -191,25 +221,6 @@
         "title": "PID"
       }
     },
-    "doiPrefix": {
-      "type": "array",
-      "title": "DOI prefixes",
-      "description": "If the repository provides DOI identifier(s), enter the DOI prefix(es).",
-      "items": {
-        "type": "string",
-        "pattern": "^10\\.",
-        "title": "DOI prefix"
-      }
-    },
-    "handlePrefix": {
-      "type": "array",
-      "title": "Handle prefixes",
-      "description": "If the repository provides Handle identifier(s), enter the Handle prefix(es).",
-      "items": {
-        "type": "string",
-        "title": "Handle prefix"
-      }
-    },
     "pidPerson": {
       "type": "array",
       "title": "Supported persistent identifiers for persons",
@@ -242,46 +253,6 @@
           "other"
         ],
         "title": "Certificate"
-      }
-    },
-    "metadataSchema": {
-      "type": "array",
-      "format": "table",
-      "uniqueItems": true,
-      "title": "Metadata schemas",
-      "description": "Metadata schemas used in the repository. Provide a link to an object of type MetadataSchema.",
-      "items": {
-        "type": "object",
-        "title": "Metadata schema",
-        "required": [
-          "metadataSchemaId",
-          "metadataSchemaUsage"
-        ],
-        "properties": {
-          "metadataSchemaId": {
-            "title": "Metadata schema",
-            "type": "string",
-            "cordra": {
-              "type": {
-                "handleReference": {
-                  "types": [
-                    "MetadataSchema"
-                  ]
-                }
-              }
-            }
-          },
-          "metadataSchemaUsage": {
-            "title": "Usage",
-            "type": "string",
-            "description": "Usage of the metadata schema in the repository.",
-            "enum": [
-              "internal format",
-              "export via REST API",
-              "export via OAI-PMH"
-            ]
-          }
-        }
       }
     },
     "restApi": {
@@ -369,6 +340,20 @@
         "format": "uri",
         "title": "URL"
       }
+    },
+    "curation": {
+      "type": "boolean",
+      "title": "Is repository curated"
+    },
+    "peerReview": {
+      "type": "string",
+      "title": "Dataset peer-review",
+      "description": "Defines if the repository supports or requires dataset peer-review.",
+      "enum": [
+        "none",
+        "optional",
+        "required"
+      ]
     },
     "controlledVocabulary": {
       "type": "array",

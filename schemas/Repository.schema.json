@@ -117,8 +117,7 @@
         "pilot - not accepting data",
         "pilot - accepting data",
         "production",
-        "decomissioned",
-        "offline"
+        "decomissioned"
       ],
       "title": "Repository status",
       "description": "Actual repository development or production status.",
@@ -177,8 +176,9 @@
         "type": "string",
         "title": "Keyword"
       },
+      "minItems": 3,
       "title": "Keywords in Czech",
-      "description": "Freely formed keyword in Czech that describes the content and focus of the repository."
+      "description": "Freely formed keyword in Czech that describes the content and focus of the repository. Insert at least three."
     },
     "keywordEn": {
       "type": "array",
@@ -186,8 +186,9 @@
         "type": "string",
         "title": "Keyword"
       },
+      "minItems": 3,
       "title": "Keywords in English",
-      "description": "Freely formed keyword in English that describes the content and focus of the repository."
+      "description": "Freely formed keyword in English that describes the content and focus of the repository. Insert at least three."
     },
     "mainContact": {
       "type": "array",
@@ -197,7 +198,8 @@
         "type": "string",
         "format": "email",
         "title": "Email"
-      }
+      },
+      "minItems": 1
     },
     "organization": {
       "type": "array",
@@ -241,6 +243,46 @@
       "format": "uri",
       "title": "Main repository URL",
       "description": "URL of the repository home page. Please fill in once the repository is public."
+    },
+    "metadataSchema": {
+      "type": "array",
+      "format": "table",
+      "uniqueItems": true,
+      "title": "Metadata schemas",
+      "description": "Metadata schemas used in the repository. Provide a link to an object of type MetadataSchema.",
+      "items": {
+        "type": "object",
+        "title": "Metadata schema",
+        "required": [
+          "metadataSchemaId",
+          "metadataSchemaUsage"
+        ],
+        "properties": {
+          "metadataSchemaId": {
+            "title": "Metadata schema",
+            "type": "string",
+            "cordra": {
+              "type": {
+                "handleReference": {
+                  "types": [
+                    "MetadataSchema"
+                  ]
+                }
+              }
+            }
+          },
+          "metadataSchemaUsage": {
+            "title": "Usage",
+            "type": "string",
+            "description": "Usage of the metadata schema in the repository.",
+            "enum": [
+              "internal format",
+              "export via REST API",
+              "export via OAI-PMH"
+            ]
+          }
+        }
+      }
     },
     "workingGroup": {
       "type": "array",
