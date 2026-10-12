@@ -19,8 +19,9 @@ nav:
   - AAI Integration: aai-integration.md
   - Contact List: contact-list.md
   - Controlled Vocab Request: controlled-vocab-request.md
+  - Metadata Schema: metadata-schema.md
   - Organization: organization.md
   - Project: project.md
-  - Repository Detail: repository-detail.md
-  - Repository Summary: repository-summary.md
+  - Repository: repository.md
+  - Repository Plus: repository-plus.md
   - Service Queue: service-queue.md

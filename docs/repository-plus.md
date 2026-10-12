@@ -10,20 +10,19 @@ policy | Repository policies | object | 0..n | Repository policies.
 policy.policyUrl | Policy URL | uri | 1..1 | 
 policy.policyType | Policy type | enum | 1..1 | 
 license | Supported licenses | enum | 0..n | Licenses supported by the repository.
-nrpInfrastructure | NRP infrastructure | boolean | 0..1 | Information whether the repository runs on the NRP infrastructure.
+researchInfrastructure | Research infrastructure | uri | 0..n | Information whether the repository is related to any research infrastructures, either Czech large infrastrucutres or European ones. Identified by ROR.org.
+nrpInfrastructure | NRP infrastructure | object | 0..1 | Information whether the repository uses the NRP infrastructure and which part of it.
+nrpInfrastructure.S3 | S3 | boolean | 0..1 | 
+nrpInfrastructure.Kubernetes | Kubernetes | boolean | 0..1 | 
+nrpInfrastructure.AAI | AAI | boolean | 0..1 | 
 repoGit | Git platforms | uri | 0..n | The repository or organization on GitHub or another platform for code versioning (URL address of the project landing page on Git or another platform) for general or customized software used for desribed repository.
-serviceQueue | Service queue for the repository. Provide a link to an object of type ServiceQueue. | handle reference | 0..1 | 
+serviceQueue | Service queue for the repository. Provide a link to an object of type ServiceQueue. | handle reference | 0..n | 
 aaiIntegration | AAI integration for the repository. Provide a link to an object of type AAIIntegration. | handle reference | 0..1 | 
 versioning | Versioning support | boolean | 0..1 | Information if the repository supports versioning of files and metadata.
 relatedPublication | Support for related publications | boolean | 0..1 | Information if the repository offers the possibility to link metadata records of the datasets with metadata of another related resources (articles, software, another datasets etc.).
 pidType | Persistent identifier type used in the repository | uri | 0..n | For definiton of PIDs in the repository, use the Wikidata URI of the identifier, eg. https://www.wikidata.org/entity/Q25670 for DOI identifier used in described repository.
-doiPrefix | DOI prefixes | string | 0..n | If the repository provides DOI identifier(s), enter the DOI prefix(es).
-handlePrefix | Handle prefixes | string | 0..n | If the repository provides Handle identifier(s), enter the Handle prefix(es).
 pidPerson | Supported persistent identifiers for persons | enum | 0..n | Select the type of persistent identifiers which are used in the repository for person identification.
 certificate | Repository certification | enum | 0..n | The type of certification that the repository has obtained.
-metadataSchema | Metadata schemas | object | 0..n | Metadata schemas used in the repository. Provide a link to an object of type MetadataSchema.
-metadataSchema.metadataSchemaId | Metadata schema | handle reference | 1..1 | 
-metadataSchema.metadataSchemaUsage | Usage | enum | 1..1 | Usage of the metadata schema in the repository.
 restApi | Repository REST API | object | 0..n | Information about the repository REST API.
 restApi.restApiEndpoint | Endpoint | uri | 1..1 | REST API endpoint (URL address) of the repository.
 restApi.restApiSpecification | Specification | uri | 1..1 | Documentation or specification of the repository REST API (a set of instructions on how to work with API and how to send queries, eg. OpenAPI specification).
@@ -33,6 +32,8 @@ sparqlApi.sparqlApiSpecification | Specification | uri | 1..1 | Documentation or
 oaipmhEndpoint | Repository OAI-PMH endpoints | uri | 0..n | OAI-PMH endpoints (URL address) of the repository.
 documentationTech | Technical documentation | uri | 0..n | Repository technical documentation (repository architecture, parameters of used software, functions etc.).
 documentationUser | User documentation | uri | 0..n | Repository user documentation (for using the repository).
+curation | Is repository curated | boolean | 0..1 | 
+peerReview | Dataset peer-review | enum | 0..1 | Defines if the repository supports or requires dataset peer-review.
 controlledVocabulary | Controlled vocabularies | handle reference | 0..n | Controlled vocabularies used in the repository. Provide a link to an object of type ControlledVocab.
 datasetMaxSize | Dataset size limit | number | 0..1 | The maximum possible size of the uploaded dataset. Please specify in GB.
 sensitiveData | Support for sensitive data | boolean | 0..1 | Information if the repository supports sensitive data deposit.

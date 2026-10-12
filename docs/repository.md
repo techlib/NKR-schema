@@ -14,13 +14,16 @@ software | Software | string | 1..1 | Main software on which the repository is b
 releaseDate | Repository release date | date | 1..1 | The date when the repository moves or will move into the production phase. This can also be a planned date in the future.
 endProduction | End of production phase | date | 0..1 | The date when the repository has passed or will pass into the decommissioned phase. This may also be a planned date in the future.
 subject | Subject classification | uri | 1..n | Field(s) to which the repository content is dedicated, as defined by the Frascati Manual. Copy the URI's from https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/. If the repository is generic, covering all subjects, it is necessary to select all 6 top level areas one by one.
-keywordCz | Keywords in Czech | string | 1..n | Freely formed keyword in Czech that describes the content and focus of the repository.
-keywordEn | Keywords in English | string | 1..n | Freely formed keyword in English that describes the content and focus of the repository.
+keywordCz | Keywords in Czech | string | 1..n | Freely formed keyword in Czech that describes the content and focus of the repository. Insert at least three.
+keywordEn | Keywords in English | string | 1..n | Freely formed keyword in English that describes the content and focus of the repository. Insert at least three.
 mainContact | Main contact | email | 1..n | Contact for the end-user, e.g. a generic email.
 organization | Organizations | object | 1..n | Organization(s) responsible for the repository management or specific part of the repository management (could be large research infrastructure or consortium). Provide a link to an object of type Organization.
 organization.organizationId | Organization | handle reference | 1..1 | 
 organization.organizationRole | Role | enum | 1..1 | 
 mainUrl | Main repository URL | uri | 0..1 | URL of the repository home page. Please fill in once the repository is public.
+metadataSchema | Metadata schemas | object | 0..n | Metadata schemas used in the repository. Provide a link to an object of type MetadataSchema.
+metadataSchema.metadataSchemaId | Metadata schema | handle reference | 1..1 | 
+metadataSchema.metadataSchemaUsage | Usage | enum | 1..1 | Usage of the metadata schema in the repository.
 workingGroup | Relevant EOSC CZ working groups | enum | 0..n | EOSC CZ working groups relevant for the repository.
 fundingProject | Funding projects | handle reference | 0..n | Funding grants or projects. Provide a link to an object of type Project.
 remarks | Remarks | string | 0..1 | Any remarks which are not possible to enter in another field.
