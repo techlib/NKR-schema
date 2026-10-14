@@ -1,7 +1,7 @@
 id | name | data type | cardinality | description
 -- | -- | -- | -- | --
-id | id | string | 1..1 | 
-handleUrl | Handle identifier | uri | 1..1 | Persistent identifier for the record.
+id | id | string | 0..1 | 
+handleUrl | Handle identifier | uri | 0..1 | Persistent identifier for the record.
 name | Institution name | string | 1..1 | 
 additionalName | Additional names | string | 0..n | 
 rorUrl | ROR identifier (URL) | uri | 0..1 | 

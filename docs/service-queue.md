@@ -1,7 +1,7 @@
 id | name | data type | cardinality | description
 -- | -- | -- | -- | --
-id | id | string | 1..1 | 
-handleUrl | Handle identifier | uri | 1..1 | Persistent identifier for the record.
+id | id | string | 0..1 | 
+handleUrl | Handle identifier | uri | 0..1 | Persistent identifier for the record.
 name | Name of the service queue | string | 1..1 | 
 alias | Queue alias | string | 1..1 | 
 description | Description of the service queue | string | 1..1 | Describe the purpose of the queue; who is it intended for, etc.
