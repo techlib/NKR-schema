@@ -1,7 +1,7 @@
 id | name | data type | cardinality | description
 -- | -- | -- | -- | --
-id | id | string | 1..1 | 
-handleUrl | Handle identifier | uri | 1..1 | Persistent identifier for the record.
+id | id | string | 0..1 | 
+handleUrl | Handle identifier | uri | 0..1 | Persistent identifier for the record.
 name | Name | string | 1..1 | 
 description | Description | string | 1..1 | Maps to the property dc:description
 creator | Organisation Creator | string | 0..1 | Maps to the property dc:creator

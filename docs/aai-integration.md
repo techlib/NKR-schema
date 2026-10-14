@@ -1,7 +1,7 @@
 id | name | data type | cardinality | description
 -- | -- | -- | -- | --
-id | id | string | 1..1 | 
-handleUrl | Handle identifier | uri | 1..1 | Persistent identifier for the record.
+id | id | string | 0..1 | 
+handleUrl | Handle identifier | uri | 0..1 | Persistent identifier for the record.
 name | Name | string | 1..1 | 
 voName | Name of the Perun virtual organization | string | 0..1 | Maps to VO attribute "displayName" in AAI for human-readable repository name in GUI.
 voShortName | Short name of the Perun virtual organization | string | 0..1 | Short repository name used by the authentication and authorisation infrastructure. Maps to VO attribute "shortName" in AAI for human-readable repository ID in GUI.
