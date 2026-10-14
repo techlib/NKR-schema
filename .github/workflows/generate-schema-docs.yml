@@ -1,6 +1,7 @@
 name: Generate schema docs
 
 on:
+  workflow_dispatch:
   push:
 
 permissions:
