@@ -27,4 +27,4 @@ metadataSchema.metadataSchemaUsage | Usage | enum | 1..1 | Usage of the metadata
 workingGroup | Relevant EOSC CZ working groups | enum | 0..n | EOSC CZ working groups relevant for the repository.
 fundingProject | Funding projects | handle reference | 0..n | Funding grants or projects. Provide a link to an object of type Project.
 remarks | Remarks | string | 0..1 | Any remarks which are not possible to enter in another field.
-detailedInformation | Detailed information for the repository. Provide a link to an object of type RepositoryPlus. | handle reference | 0..1 | 
+detailedInformation | Detailed information for the repository. Provide a link to an object of type RepositoryDetail. | handle reference | 0..1 | 

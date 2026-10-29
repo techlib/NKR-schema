@@ -34,6 +34,7 @@ documentationTech | Technical documentation | uri | 0..n | Repository technical 
 documentationUser | User documentation | uri | 0..n | Repository user documentation (for using the repository).
 curation | Is repository curated | boolean | 0..1 | 
 peerReview | Dataset peer-review | enum | 0..1 | Defines if the repository supports or requires dataset peer-review.
+controlledVocabulary | Controlled vocabularies | handle reference | 0..n | Controlled vocabularies used in the repository. Provide a link to an object of type ControlledVocab.
 datasetMaxSize | Dataset size limit | number | 0..1 | The maximum possible size of the uploaded dataset. Please specify in GB.
 sensitiveData | Support for sensitive data | boolean | 0..1 | Information if the repository supports sensitive data deposit.
 datasetType | Supported dataset types | enum | 0..n | Type(s) of the supported dataset(s).
