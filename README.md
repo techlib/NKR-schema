@@ -4,8 +4,7 @@
 Latest version: 1.2.0  
 
 **Changes in version 1.2.0**
-- added RepositoryDetail object
-- added RepositorySummary object
-- removed Repository object
+- added RepositoryPlus object
+- added MetadataSchema object
 
-  For comments and suggestions, please open an issue.
+For comments and suggestions, please open an issue.
