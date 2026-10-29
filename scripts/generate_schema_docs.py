@@ -75,7 +75,7 @@ def generate_docs(schema_paths: list[Path]) -> list[Path]:
     """Generate one Markdown file per ``*.schema.json`` file.
 
     Top-level Markdown files in ``DOCS_DIR`` that do not match a schema in
-    ``SCHEMAS_DIR`` are removed.
+    ``SCHEMAS_DIR`` are removed, except for the homepage.
     """
     DOCS_DIR.mkdir(parents=True, exist_ok=True)
     written: list[Path] = []
@@ -83,6 +83,7 @@ def generate_docs(schema_paths: list[Path]) -> list[Path]:
         DOCS_DIR / f"{_schema_slug(schema_path)}.md"
         for schema_path in schema_paths
     }
+    expected_paths.add(DOCS_DIR / "index.md")
 
     _remove_stale_docs(expected_paths)
 
@@ -108,7 +109,7 @@ def _remove_stale_docs(expected_paths: set[Path]) -> None:
 
 def update_mkdocs_nav(schema_paths: list[Path]) -> None:
     """Replace the MkDocs nav block with pages generated from schemas."""
-    nav_lines = ["nav:\n"]
+    nav_lines = ["nav:\n", "  - Homepage: index.md\n"]
     nav_lines.extend(
         f"  - {_schema_nav_label(schema_path)}: {_schema_slug(schema_path)}.md\n"
         for schema_path in schema_paths

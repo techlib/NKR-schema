@@ -16,6 +16,7 @@ extra_css:
   - stylesheets/extra.css
 
 nav:
+  - Homepage: index.md
   - AAI Integration: aai-integration.md
   - Contact List: contact-list.md
   - Controlled Vocab Request: controlled-vocab-request.md
