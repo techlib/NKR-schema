@@ -109,7 +109,7 @@ def _remove_stale_docs(expected_paths: set[Path]) -> None:
 
 def update_mkdocs_nav(schema_paths: list[Path]) -> None:
     """Replace the MkDocs nav block with pages generated from schemas."""
-    nav_lines = ["nav:\n", "  - Homepage: index.md\n"]
+    nav_lines = ["nav:\n", "  - Introduction: index.md\n"]
     nav_lines.extend(
         f"  - {_schema_nav_label(schema_path)}: {_schema_slug(schema_path)}.md\n"
         for schema_path in schema_paths
