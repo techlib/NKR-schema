@@ -332,14 +332,14 @@
       "title": "Remarks"
     },
     "detailedInformation": {
-      "title": "Detailed information for the repository. Provide a link to an object of type RepositoryDetail.",
+      "title": "Detailed information for the repository. Provide a link to an object of type RepositoryPlus.",
       "type": "string",
       "readOnly": true,
       "cordra": {
         "type": {
           "handleReference": {
             "types": [
-              "RepositoryDetail"
+              "RepositoryPlus"
             ]
           }
         }

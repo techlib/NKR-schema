@@ -355,24 +355,6 @@
         "required"
       ]
     },
-    "controlledVocabulary": {
-      "type": "array",
-      "title": "Controlled vocabularies",
-      "description": "Controlled vocabularies used in the repository. Provide a link to an object of type ControlledVocab.",
-      "items": {
-        "type": "string",
-        "title": "Vocabulary",
-        "cordra": {
-          "type": {
-            "handleReference": {
-              "types": [
-                "ControlledVocab"
-              ]
-            }
-          }
-        }
-      }
-    },
     "datasetMaxSize": {
       "type": "number",
       "title": "Dataset size limit",
