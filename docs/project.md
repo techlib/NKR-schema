@@ -8,3 +8,4 @@ code | Project identifiers | object | 0..n | Project identifier as specified by 
 code.projectId | Identifier | string | 1..1 | 
 code.projectScheme | Scheme | enum | 1..1 | 
 code.projectUrl | URL | uri | 0..1 | 
+funderName | Funder name | string | 0..1 | 

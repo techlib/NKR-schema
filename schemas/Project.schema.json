@@ -70,6 +70,10 @@
           }
         }
       }
+    },
+    "funderName": {
+      "type": "string",
+      "title": "Funder name"
     }
   }
 }
