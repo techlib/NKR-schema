@@ -33,6 +33,13 @@
       "description": "Persistent identifier (DOI) for the repository records in NKR.",
       "readOnly": true
     },
+    "handleUrl": {
+      "type": "string",
+      "format": "uri",
+      "title": "Handle identifier",
+      "description": "Persistent identifier for the record.",
+      "readOnly": true
+    },
     "repositoryName": {
       "type": "string",
       "maxLength": 128,
